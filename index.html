@@ -4,10 +4,1197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GEOFS-FLY 连线飞行平台官网</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a192f;
+            color: #e6f1ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background-color: rgba(10, 25, 47, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #64ffda;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #64ffda;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #ccd6f6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+        
+        .nav-links a.active {
+            color: #64ffda;
+            border-bottom: 2px solid #64ffda;
+            padding-bottom: 5px;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #64ffda, #00a8cc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #ccd6f6;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #8892b0;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #64ffda;
+            padding: 15px 40px;
+            border: 2px solid #64ffda;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .cta-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+        
+        /* 特性区域样式 */
+        .features {
+            padding: 100px 0;
+            background-color: #112240;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: #ccd6f6;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #64ffda;
+            margin: 15px auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background-color: rgba(17, 34, 64, 0.7);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #233554;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: #64ffda;
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: #64ffda;
+            margin-bottom: 25px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ccd6f6;
+        }
+        
+        .feature-card p {
+            color: #8892b0;
+        }
+        
+        /* 平台介绍样式 */
+        .platform-intro {
+            padding: 100px 0;
+            background-color: #0a192f;
+        }
+        
+        .platform-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .platform-text {
+            flex: 1;
+        }
+        
+        .platform-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #64ffda;
+        }
+        
+        .platform-text p {
+            color: #8892b0;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .platform-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .platform-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .platform-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 插件区域样式 */
+        .plugins {
+            padding: 100px 0;
+            background-color: #112240;
+        }
+        
+        .plugins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .plugin-card {
+            background-color: rgba(17, 34, 64, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid #233554;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .plugin-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: #64ffda;
+        }
+        
+        .plugin-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .plugin-icon {
+            font-size: 2.5rem;
+            color: #64ffda;
+            margin-right: 15px;
+        }
+        
+        .plugin-title {
+            font-size: 1.5rem;
+            color: #ccd6f6;
+        }
+        
+        .plugin-desc {
+            color: #8892b0;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .plugin-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tag {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .plugin-link {
+            display: inline-block;
+            background-color: transparent;
+            color: #64ffda;
+            padding: 10px 20px;
+            border: 1px solid #64ffda;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .plugin-link:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        
+        /* 友情链接区域 */
+        .friend-links {
+            padding: 100px 0;
+            background-color: #0a192f;
+        }
+        
+        .friend-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .friend-link-card {
+            background-color: rgba(17, 34, 64, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #233554;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .friend-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: #64ffda;
+        }
+        
+        .friend-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #64ffda;
+        }
+        
+        .friend-link-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ccd6f6;
+        }
+        
+        .friend-link-card p {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .friend-link {
+            display: inline-block;
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .friend-link:hover {
+            color: #ccd6f6;
+            text-decoration: underline;
+        }
+        
+        /* ATC区域样式 */
+        .atc-section {
+            padding: 100px 0;
+            background-color: #0a192f;
+        }
+        
+        .atc-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .atc-text {
+            flex: 1;
+        }
+        
+        .atc-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #64ffda;
+        }
+        
+        .atc-text p {
+            color: #8892b0;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .atc-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .atc-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .atc-feature i {
+            color: #64ffda;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .atc-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .atc-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .atc-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 下载区域样式 */
+        .download {
+            padding: 100px 0;
+            background-color: #112240;
+            text-align: center;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            background-color: #233554;
+            color: #ccd6f6;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .download-btn i {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #64ffda;
+        }
+        
+        .download-btn:hover {
+            background-color: rgba(35, 53, 84, 0.7);
+            border-color: #64ffda;
+            transform: translateY(-5px);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #020c1b;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ccd6f6;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #8892b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #64ffda;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #233554;
+            color: #ccd6f6;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #64ffda;
+            color: #0a192f;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #233554;
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 飞机动画 */
+        .airplane {
+            position: absolute;
+            font-size: 2rem;
+            color: #64ffda;
+            opacity: 0.7;
+            z-index: 1;
+            animation: fly 20s linear infinite;
+        }
+        
+        .airplane:nth-child(1) {
+            top: 20%;
+            left: -50px;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+        
+        .airplane:nth-child(2) {
+            top: 40%;
+            right: -50px;
+            animation-direction: reverse;
+            animation-duration: 22s;
+        }
+        
+        .airplane:nth-child(3) {
+            top: 70%;
+            left: -50px;
+            animation-delay: 5s;
+            animation-duration: 30s;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(25vw) translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateX(50vw) translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateX(75vw) translateY(20px) rotate(-5deg);
+            }
+            100% {
+                transform: translateX(100vw) translateY(0) rotate(0deg);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .platform-content, .atc-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .atc-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 25, 47, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .features, .platform-intro, .plugins, .friend-links, .atc-section, .download {
+                padding: 70px 0;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align: center;margin: 30px;">
-        <h1>欢迎来到GEOFS-FLY官网</h1>
-        <h2>Wellcome to GEOFS-FLY</h2>
-    </div>
+    <!-- 飞机动画元素 -->
+    <div class="airplane">✈</div>
+    <div class="airplane">🛩</div>
+    <div class="airplane">✈</div>
+    
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-plane"></i>
+                    <span>GEOFS-FLY</span>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#features">平台特性</a></li>
+                    <li><a href="#plugins">插件中心</a></li>
+                    <li><a href="#atc">ATC系统</a></li>
+                    <li><a href="#friends">友情链接</a></li>
+                    <li><a href="#download">开始飞行</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>欢迎来到GEOFS-FLY官网</h1>
+            <h2>Wellcome to GEOFS-FLY</h2>
+            <p>GEOFS-FLY 是一个基于浏览器的免费在线飞行模拟平台，支持全球玩家实时连线飞行。体验真实的飞行物理引擎、全球地景和实时天气系统，与全球飞行员一起翱翔蓝天。</p>
+            <a href="#download" class="cta-button">立即开始飞行 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- 特性区域 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">平台特性</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>全球连线飞行</h3>
+                    <p>与全球数千名飞行员实时连线，在同一个虚拟天空下飞行，体验真实的空中交通环境。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <h3>实时天气系统</h3>
+                    <p>基于真实气象数据，模拟全球各地的实时天气状况，包括云层、降水、风切变等。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>高清卫星地图</h3>
+                    <p>集成高清卫星地图，提供真实的全球地景，让每次飞行都如同身临其境。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-plane-departure"></i>
+                    <h3>多样机型选择</h3>
+                    <p>从轻型螺旋桨飞机到大型喷气式客机，提供多种型号飞机满足不同飞行需求。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>多人协作功能</h3>
+                    <p>支持语音通讯、编队飞行、空中加油等多人协作功能，增强飞行社交体验。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>飞行数据分析</h3>
+                    <p>记录每次飞行的详细数据，提供专业的飞行分析报告，帮助提升飞行技能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 插件中心 -->
+    <section class="plugins" id="plugins">
+        <div class="container">
+            <h2 class="section-title">插件中心</h2>
+            <div class="plugins-grid">
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="plugin-title">高级地景包</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        提供全球各大城市高清地景，包括标志性建筑、详细机场环境，提升视觉体验。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">地景</span>
+                        <span class="tag">高清</span>
+                        <span class="tag">视觉增强</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3 class="plugin-title">扩展机模包</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        新增30+飞机型号，包括波音787、空客A350等现代客机，以及经典军用飞机。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">飞机</span>
+                        <span class="tag">扩展</span>
+                        <span class="tag">机型</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-cloud-moon-rain"></i>
+                        </div>
+                        <h3 class="plugin-title">高级天气系统</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        增强天气模拟效果，包括雷暴、雾、能见度变化等复杂气象条件模拟。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">天气</span>
+                        <span class="tag">模拟</span>
+                        <span class="tag">增强</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="plugin-title">ATC语音通讯</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        与虚拟空中交通管制员进行实时语音通讯，模拟真实航空无线电通讯环境。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">ATC</span>
+                        <span class="tag">语音</span>
+                        <span class="tag">通讯</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="plugin-title">飞行工具包</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        提供飞行计划工具、导航计算器、性能计算器等实用飞行辅助工具。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">工具</span>
+                        <span class="tag">辅助</span>
+                        <span class="tag">计算</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+                
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="plugin-title">涂装编辑器</h3>
+                    </div>
+                    <div class="plugin-desc">
+                        自定义飞机涂装设计工具，创建个性化的飞机外观，与社区分享您的设计。
+                    </div>
+                    <div class="plugin-tags">
+                        <span class="tag">涂装</span>
+                        <span class="tag">设计</span>
+                        <span class="tag">自定义</span>
+                    </div>
+                    <a href="#" class="plugin-link">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ATC系统区域 -->
+    <section class="atc-section" id="atc">
+        <div class="container">
+            <h2 class="section-title">空中交通管制 (ATC) 系统</h2>
+            <div class="atc-content">
+                <div class="atc-text">
+                    <h3>专业的虚拟空中交通管制体验</h3>
+                    <p>GEOFS-FLY 提供完整的虚拟空中交通管制系统，模拟真实世界的航空管制环境，让您的飞行体验更加真实和专业。</p>
+                    <p>我们的ATC系统由经验丰富的虚拟管制员运营，提供塔台、进近、区调等不同级别的管制服务，覆盖全球主要机场和航路。</p>
+                    
+                    <div class="atc-features">
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>实时语音通讯</h4>
+                                <p>与虚拟管制员进行实时语音通讯，使用标准航空用语</p>
+                            </div>
+                        </div>
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>专业管制指令</h4>
+                                <p>接收起飞、降落、高度改变、航向调整等专业指令</p>
+                            </div>
+                        </div>
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>冲突避免</h4>
+                                <p>ATC系统监控空中交通，提供冲突预警和解决方案</p>
+                            </div>
+                        </div>
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>流量管理</h4>
+                                <p>在高流量时段管理航班起降顺序，模拟真实机场运营</p>
+                            </div>
+                        </div>
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>紧急情况处理</h4>
+                                <p>模拟紧急情况下的管制程序，提供专业的应急处置指导</p>
+                            </div>
+                        </div>
+                        <div class="atc-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>多语言支持</h4>
+                                <p>支持英语、中文等多种语言的管制通讯，满足全球用户需求</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="atc-image">
+                    <img src="https://images.unsplash.com/photo-1598880940080-ff9a29891b85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="空中交通管制界面">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 友情链接区域 -->
+    <section class="friend-links" id="friends">
+        <div class="container">
+            <h2 class="section-title">友情链接</h2>
+            <div class="friend-links-grid">
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>飞行模拟社区</h3>
+                    <p>全球最大的飞行模拟爱好者交流平台，提供丰富的资源和教程。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+                
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>航空天气服务</h3>
+                    <p>提供专业航空天气预报，帮助飞行员规划飞行路线和应对天气变化。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+                
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>航图在线</h3>
+                    <p>提供全球机场航图和导航数据，支持飞行计划和导航辅助。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+                
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>飞行学院</h3>
+                    <p>在线飞行培训平台，提供从基础到高级的飞行课程和模拟训练。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+                
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>模拟飞行工具</h3>
+                    <p>提供各种飞行模拟辅助工具，增强飞行体验和操作便利性。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+                
+                <div class="friend-link-card">
+                    <div class="friend-logo">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>航空知识库</h3>
+                    <p>全面的航空知识数据库，涵盖飞行原理、机型资料、航空历史等内容。</p>
+                    <a href="#" class="friend-link">访问网站 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2 class="section-title">开始飞行之旅</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px; color: #8892b0; font-size: 1.1rem;">GEOFS-FLY 完全基于浏览器运行，无需安装任何客户端。只需点击下方按钮，即可立即开始您的飞行体验。</p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    <i class="fab fa-chrome"></i>
+                    <span>Chrome浏览器运行</span>
+                </a>
+                <a href="#" class="download-btn">
+                    <i class="fab fa-firefox"></i>
+                    <span>Firefox浏览器运行</span>
+                </a>
+                <a href="#" class="download-btn">
+                    <i class="fab fa-edge"></i>
+                    <span>Edge浏览器运行</span>
+                </a>
+            </div>
+            
+            <p style="margin-top: 40px; color: #8892b0; font-size: 0.9rem;">* 建议使用最新版本浏览器以获得最佳体验 *</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo" style="font-size: 28px; margin-bottom: 20px;">
+                        <i class="fas fa-plane"></i>
+                        <span>GEOFS-FLY</span>
+                    </div>
+                    <p style="color: #8892b0; margin-bottom: 20px;">全球领先的在线飞行模拟平台，为飞行爱好者提供真实的飞行体验。</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#features">平台特性</a></li>
+                        <li><a href="#plugins">插件中心</a></li>
+                        <li><a href="#atc">ATC系统</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>插件中心</h4>
+                    <ul>
+                        <li><a href="#">地景插件</a></li>
+                        <li><a href="#">飞机插件</a></li>
+                        <li><a href="#">工具插件</a></li>
+                        <li><a href="#">ATC插件</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 GEOFS-FLY 连线飞行平台. 保留所有权利. | 本网站仅供演示使用</p>
+                <p style="margin-top: 10px;">Made with <i class="fas fa-heart" style="color: #ff4757;"></i> for aviation enthusiasts worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // 导航链接点击时关闭移动菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+                
+                // 更新活动链接
+                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 滚动时更新导航栏活动状态
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // 页面加载完成后添加动画
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </body>
+</html>
